@@ -1,2 +1,2 @@
 # AutoScrollRecyclerView
-Recyclerview with auto scroll enabled like banner
+Marquee effect in RecyclerView
