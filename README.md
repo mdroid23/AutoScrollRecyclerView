@@ -1,5 +1,8 @@
 # AutoScrollRecyclerView
 
-![Marquee effect in RecyclerView](AutoScrollRecyclerView/blob/master/app/marquee_recycler_view.gif)
+Marquee effect in RecyclerView
+
+
+(app/marquee_recycler_view.gif)
 
 
