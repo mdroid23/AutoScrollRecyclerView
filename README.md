@@ -3,6 +3,6 @@
 Marquee effect in RecyclerView
 
 
-(app/marquee_recycler_view.gif)
+![](AutoScrollRecyclerView/app/marquee_recycler_view.gif)
 
 
