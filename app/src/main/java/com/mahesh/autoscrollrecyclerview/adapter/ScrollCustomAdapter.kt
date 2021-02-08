@@ -1,7 +1,7 @@
 package com.mahesh.autoscrollrecyclerview.adapter
 
 import android.content.Context
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,14 +17,10 @@ abstract class ScrollCustomAdapter(ctx: Context,
                                    private val imageModelArrayList: ArrayList<Fruit>) :
     RecyclerView.Adapter<ScrollCustomAdapter.MyViewHolder>() {
 
-    private val inflater: LayoutInflater
+    private val inflater: LayoutInflater = LayoutInflater.from(ctx)
 
     val onItemClickListener: AdapterView.OnItemClickListener
         get() = onItemClickListener
-
-    init {
-        inflater = LayoutInflater.from(ctx)
-    }
 
 
     abstract fun load()
@@ -38,7 +34,7 @@ abstract class ScrollCustomAdapter(ctx: Context,
     override fun onBindViewHolder(holder: ScrollCustomAdapter.MyViewHolder, position: Int) {
 
         holder.iv.setImageResource(imageModelArrayList[position].imgRes)
-        holder.time.setText(imageModelArrayList[position].name)
+        holder.time.text = imageModelArrayList[position].name
 
     }
 
@@ -48,13 +44,8 @@ abstract class ScrollCustomAdapter(ctx: Context,
 
     inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        var time: TextView
-        var iv: ImageView
-
-        init {
-            time = itemView.findViewById(R.id.txtName) as TextView
-            iv = itemView.findViewById(R.id.imageView) as ImageView
-        }
+        var time: TextView = itemView.findViewById(R.id.txtName) as TextView
+        var iv: ImageView = itemView.findViewById(R.id.imageView) as ImageView
 
     }
 }
