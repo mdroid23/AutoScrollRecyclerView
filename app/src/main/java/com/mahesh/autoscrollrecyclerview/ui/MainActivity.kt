@@ -2,13 +2,13 @@ package com.mahesh.autoscrollrecyclerview.ui
 
 import android.os.Bundle
 import android.os.Handler
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.LinearSmoothScroller
-import android.support.v7.widget.RecyclerView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.LinearSmoothScroller
+import androidx.recyclerview.widget.RecyclerView
 import android.util.DisplayMetrics
 import android.util.Log
-import android.view.View
+
 import com.mahesh.autoscrollrecyclerview.R
 import com.mahesh.autoscrollrecyclerview.adapter.ScrollCustomAdapter
 import com.mahesh.autoscrollrecyclerview.model.Fruit
@@ -16,7 +16,7 @@ import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
-    private final var TAG = "MainActivity"
+    private var TAG = "MainActivity"
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var imageArrayList: ArrayList<Fruit>
@@ -24,8 +24,8 @@ class MainActivity : AppCompatActivity() {
 
     //RecyclerView data
     private var nameArray =
-        listOf<String>("Apple", "Mango", "Strawberry", "Pineapple", "Orange", "Blueberry", "Watermelon")
-    private var imageArray = listOf<Int>(
+        listOf("Apple", "Mango", "Strawberry", "Pineapple", "Orange", "Blueberry", "Watermelon")
+    private var imageArray = listOf(
         R.drawable.apple,
         R.drawable.mango,
         R.drawable.straw,
@@ -61,7 +61,7 @@ class MainActivity : AppCompatActivity() {
             override fun smoothScrollToPosition(recyclerView: RecyclerView, state: RecyclerView.State?, position: Int) {
                 val smoothScroller = object : LinearSmoothScroller(this@MainActivity) {
                     override fun calculateSpeedPerPixel(displayMetrics: DisplayMetrics?): Float {
-                        return 5.0f;
+                        return 5.0f
                     }
                 }
                 smoothScroller.targetPosition = position
@@ -80,16 +80,14 @@ class MainActivity : AppCompatActivity() {
         recyclerView.layoutManager = layoutManager
         recyclerView.setHasFixedSize(true)
         recyclerView.setItemViewCacheSize(10)
-        recyclerView.isDrawingCacheEnabled = true
-        recyclerView.drawingCacheQuality = View.DRAWING_CACHE_QUALITY_LOW
         recyclerView.adapter = adapter
         autoScroll()
     }
 
 
     private fun autoScroll() {
-        scrollCount = 0;
-        var speedScroll: Long = 1200;
+        scrollCount = 0
+        val speedScroll: Long = 1200
         val runnable = object : Runnable {
             override fun run() {
                 if (layoutManager.findFirstVisibleItemPosition() >= imageArrayList.size / 2) {

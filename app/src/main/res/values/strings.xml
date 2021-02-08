@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">AutoScrollRecyclerView</string>
+    <string name="fruits">Fruits</string>
 </resources>
